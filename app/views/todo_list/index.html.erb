@@ -1,0 +1,25 @@
+<h2>Todo Lists</h2>
+
+<div class="todo_lists">
+  <% @todolists.each do |todo_list| %>
+  <div class="todos">
+    <h2><%= link_to_unless_current todo_list.title, todo_lists_path(todos) %></h2>
+      <h3>Written on: <%= todo_list.written_at %></h3>
+        <% unless todo_list.todos.count.zero? %>
+          <h3>
+            Tagged as:
+              <% todo_lists.todos.map do |todos| %>
+                <%= link_to todos.name, todos_path(todos.name) %>,
+              <% end %>
+          </h3>
+        <% end %>
+
+      <%= simple_format(todos.content) %>
+  </div>
+
+    <!-- <%= render partial: "post", object: post %> -->
+    <!-- <%= render partial: "todos", locals: { todos: todos } %> -->
+  <% end %>
+</div>
+
+<%= paginate @todolists %>
