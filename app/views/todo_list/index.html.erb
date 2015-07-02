@@ -3,6 +3,8 @@
 <div class="todo_lists">
   <% @todolists.each do |todo_list| %>
   <div class="todos">
+    <li><%= link_to "Add New Todo List", todo_lists_new_path, class: 'btn btn-info' %></li>
+
     <h2><%= link_to_unless_current todo_list.title, todo_lists_path(todos) %></h2>
       <h3>Written on: <%= todo_list.written_at %></h3>
         <% unless todo_list.todos.count.zero? %>
