@@ -6,11 +6,31 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
+
+
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <div class="container">
+    <div class="row">
+      <h1> Todo List Application </h1>
+      <p class="notice"><%= flash[:notice] %></p>
+      <p class="alert"><%= flash[:alert] %></p>
+    </div>
+    <div class="row">
+      <div class="sidebar col-xs-2">
+        <ul class="list-unstyled">
+          <% if current_user %>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete,
+                            class: 'btn btn-warning' %></li>
+    
+          <% end %>
 
-<%= yield %>
-
+        </ul>
+      </div>
+      <div class="main-content col-xs-10">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

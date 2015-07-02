@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
 
 devise_for :users
+devise_scope :user do
+  authenticated :user do
+    root to: 'todo_list#index', as: :authenticated_root
+  end
 
-root to: 'todo_list#index'
+  unauthenticated do
+    root to: 'devise/sessions#new', as: :unauthenticated_root
+  end
+end
+
 get 'todo_lists', to: 'todo_list#index'
 get 'todo_lists/new', to: 'todo_list#new'
 post 'todo_lists', to: 'todo_list#create'
