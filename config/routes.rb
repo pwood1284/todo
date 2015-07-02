@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+
+
+
+root to: 'todo_list#index'
+get 'todo_lists', to: 'todo_list#index'
+get 'todo_lists/new', to: 'todo_list#new'
+post 'todo_lists', to: 'todo_list#create'
+delete 'todo_lists', to: 'todo_list#delete'
+
+get 'todos', to: 'todos#index'
+get 'todos/new', to: 'todos#new'
+post 'todos', to: 'todos#create'
+delete 'todos', to: 'todos#delete'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
